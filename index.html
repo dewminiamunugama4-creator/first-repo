@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dew Botanicals | Natural Skincare</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Bodoni Moda', serif;
+            color: #1a1a1a;
+            background: #fefefe;
+        }
+
+        :root {
+            --sage-green: #a5b9a1;
+            --cream: #f5f3ed;
+            --dark-green: #6b7f68;
+        }
+
+        /* Ensure anchored sections are visible below fixed navbar */
+        section { scroll-margin-top: 100px; }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 2rem 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(254, 254, 254, 0.98);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 300;
+            color: #1a1a1a;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .logo-main {
+            display: block;
+        }
+
+        .logo-coordinates {
+            font-size: 0.75rem;
+            font-weight: 300;
+            color: var(--dark-green);
+            letter-spacing: 2px;
+            margin: 0.2rem 0;
+        }
+
+        .logo-tagline {
+            font-size: 0.7rem;
+            font-weight: 300;
+            color: #999;
+            letter-spacing: 2px;
+            text-transform: none;
+            font-style: italic;
+            display: block;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #1a1a1a;
+            font-size: 0.9rem;
+            font-weight: 300;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: opacity 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.6;
+        }
+
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(to bottom, var(--sage-green) 0%, var(--cream) 100%);
+            position: relative;
+        }
+
+        .hero-content {
+            text-align: center;
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-size: 5rem;
+            margin-bottom: 1rem;
+            color: var(--cream);
+            font-weight: 200;
+            letter-spacing: 8px;
+            text-transform: uppercase;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 300;
+            letter-spacing: 2px;
+        }
+
+        .hero .tagline {
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.8);
+            font-weight: 300;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero .coordinates {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.85);
+            font-weight: 300;
+            letter-spacing: 4px;
+            margin-bottom: 3rem;
+        }
+
+        .cta-button {
+            padding: 1.2rem 3.5rem;
+            background: var(--cream);
+            color: var(--dark-green);
+            border: none;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            text-decoration: none;
+            display: inline-block;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 300;
+        }
+
+        .cta-button:hover {
+            background: #fff;
+            transform: translateY(-2px);
+        }
+
+        .section {
+            padding: 8rem 8%;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 5rem;
+            color: #1a1a1a;
+            font-weight: 200;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+        }
+
+        .products {
+            background: #ffffff;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 5rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .product-card {
+            text-align: center;
+            transition: all 0.4s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-image {
+            width: 100%;
+            aspect-ratio: 3/4;
+            background: linear-gradient(135deg, var(--sage-green) 0%, var(--dark-green) 100%);
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+        }
+
+        .product-info h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: #1a1a1a;
+            font-weight: 300;
+            letter-spacing: 2px;
+        }
+
+        .product-info p {
+            color: #999;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+            font-weight: 300;
+        }
+
+        .product-price {
+            font-size: 1.1rem;
+            color: #1a1a1a;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        .ingredients {
+            background: var(--cream);
+        }
+
+        .ingredient-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 4rem 6rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .ingredient-item {
+            display: flex;
+            gap: 2rem;
+            align-items: start;
+        }
+
+        .ingredient-icon {
+            font-size: 3rem;
+            flex-shrink: 0;
+        }
+
+        .ingredient-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            color: #1a1a1a;
+            font-weight: 300;
+            letter-spacing: 2px;
+        }
+
+        .ingredient-content p {
+            color: #666;
+            line-height: 1.8;
+            font-size: 0.95rem;
+            font-weight: 300;
+        }
+
+        .testimonials {
+            background: #ffffff;
+        }
+
+        .brand-pillars {
+            background: var(--sage-green);
+            padding: 6rem 8%;
+        }
+
+        .pillars-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 3rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .pillar-item h3 {
+            font-size: 2.5rem;
+            font-weight: 200;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            color: var(--cream);
+        }
+
+        .pillar-divider {
+            font-size: 2rem;
+            color: var(--cream);
+            opacity: 0.7;
+        }
+
+        .testimonials {
+            background: #ffffff;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 4rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .testimonial-card {
+            border-top: 2px solid #1a1a1a;
+            padding-top: 2rem;
+        }
+
+        .rating {
+            color: #1a1a1a;
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+            letter-spacing: 3px;
+        }
+
+        .testimonial-text {
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            font-size: 0.95rem;
+            font-weight: 300;
+        }
+
+        .testimonial-author h4 {
+            color: #1a1a1a;
+            margin-bottom: 0.3rem;
+            font-weight: 300;
+            letter-spacing: 1px;
+            font-size: 1rem;
+        }
+
+        .testimonial-author p {
+            color: #999;
+            font-size: 0.85rem;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        .about {
+            background: var(--cream);
+        }
+
+        .faq {
+            background: #ffffff;
+        }
+
+        .faq-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            margin-bottom: 3rem;
+            padding-bottom: 3rem;
+            border-bottom: 1px solid #e5e5e5;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-item h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: #1a1a1a;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        .faq-item p {
+            color: #666;
+            line-height: 1.9;
+            font-size: 0.95rem;
+            font-weight: 300;
+        }
+
+        .contact {
+            background: var(--cream);
+        }
+
+        .contact-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact-intro {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 4rem;
+            font-weight: 300;
+            line-height: 1.8;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+        }
+
+        .contact-item h3 {
+            font-size: 1rem;
+            margin-bottom: 0.8rem;
+            color: #1a1a1a;
+            font-weight: 300;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .contact-item p {
+            color: #666;
+            font-size: 0.95rem;
+            font-weight: 300;
+        }
+
+        .about {
+            background: var(--cream);
+        }
+
+        .about-content {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .about-text {
+            font-size: 1.3rem;
+            line-height: 2;
+            color: #666;
+            margin-bottom: 5rem;
+            font-weight: 300;
+        }
+
+        .about-island {
+            font-size: 1.1rem;
+            line-height: 1.9;
+            color: #888;
+            margin-bottom: 4rem;
+            font-weight: 300;
+            font-style: italic;
+        }
+
+        .values {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 4rem;
+            text-align: center;
+        }
+
+        .value-item h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.8rem;
+            color: #1a1a1a;
+            font-weight: 300;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .value-item p {
+            color: #999;
+            font-size: 0.9rem;
+            font-weight: 300;
+        }
+
+        .footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 4rem 8%;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer h3 {
+            font-weight: 300;
+            letter-spacing: 3px;
+            font-size: 1rem;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin: 2rem 0;
+        }
+
+        .social-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: opacity 0.3s ease;
+            font-weight: 300;
+        }
+
+        .social-links a:hover {
+            opacity: 0.6;
+        }
+
+        .footer p {
+            font-size: 0.85rem;
+            font-weight: 300;
+            opacity: 0.6;
+            letter-spacing: 1px;
+        }
+
+        @media (max-width: 1024px) {
+            .product-grid,
+            .testimonial-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .ingredient-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .pillars-content {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+
+            .pillar-item h3 {
+                font-size: 1.8rem;
+            }
+
+            .pillar-divider {
+                display: none;
+            }
+
+            .contact-info {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .values {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .nav-links {
+                gap: 1.5rem;
+                font-size: 0.8rem;
+            }
+
+            .navbar {
+                padding: 1.5rem 5%;
+            }
+
+            .section {
+                padding: 6rem 5%;
+            }
+        }
+    </style>
+    <script>
+        // Enable smooth scrolling for in-page anchors
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    const href = this.getAttribute('href');
+                    if (!href || href === '#') return;
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                });
+            });
+
+            const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.product-card, .ingredient-item, .testimonial-card').forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(20px)';
+                el.style.transition = 'all 0.8s ease';
+                observer.observe(el);
+            });
+        });
+    </script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <span class="logo-main">Dew Botanicals</span>
+            <span class="logo-coordinates">7°N SL</span>
+            <span class="logo-tagline">Pure Island Skincare</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#products">Shop</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Dew Botanicals</h1>
+            <p class="coordinates">7°N SL</p>
+            <p class="tagline">Pure Island Skincare</p>
+            <p>Nature's essence from Sri Lanka</p>
+            <a href="#products" class="cta-button">Explore</a>
+        </div>
+    </section>
+
+    <section id="products" class="section products">
+        <h2 class="section-title">Collection</h2>
+        <div class="product-grid">
+            <div class="product-card">
+                <div class="product-image">🥥</div>
+                <div class="product-info">
+                    <h3>Island Ritual Cleanser</h3>
+                    <p>Luxurious cleansing blend with virgin coconut oil and moringa infusion to gently purify and deeply nourish.</p>
+                    <span class="product-price">$38</span>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">🌿</div>
+                <div class="product-info">
+                    <h3>Ceylon Dew Toner</h3>
+                    <p>Refreshing toner combining hydrating coconut water with warming cinnamon to balance and revitalize skin.</p>
+                    <span class="product-price">$32</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section brand-pillars">
+        <div class="pillars-content">
+            <div class="pillar-item">
+                <h3>Pure</h3>
+            </div>
+            <div class="pillar-divider">•</div>
+            <div class="pillar-item">
+                <h3>Island</h3>
+            </div>
+            <div class="pillar-divider">•</div>
+            <div class="pillar-item">
+                <h3>Ritual</h3>
+            </div>
+        </div>
+    </section>
+
+    <section id="ingredients" class="section ingredients">
+        <h2 class="section-title">Ingredients</h2>
+        <div class="ingredient-grid">
+            <div class="ingredient-item">
+                <div class="ingredient-icon">🌱</div>
+                <div class="ingredient-content">
+                    <h3>Moringa</h3>
+                    <p>The "miracle tree" packed with vitamins A, C, and E. Moringa purifies, protects against pollution, and delivers powerful antioxidants.</p>
+                </div>
+            </div>
+            <div class="ingredient-item">
+                <div class="ingredient-icon">🥥</div>
+                <div class="ingredient-content">
+                    <h3>Coconut Water</h3>
+                    <p>Nature's electrolyte-rich hydrator that balances skin pH, minimizes pores, and provides essential minerals for healthy skin.</p>
+                </div>
+            </div>
+            <div class="ingredient-item">
+                <div class="ingredient-icon">🥥</div>
+                <div class="ingredient-content">
+                    <h3>Virgin Coconut Oil</h3>
+                    <p>Cold-pressed and unrefined, virgin coconut oil deeply moisturizes, strengthens skin barrier, and provides antibacterial protection.</p>
+                </div>
+            </div>
+            <div class="ingredient-item">
+                <div class="ingredient-icon">🌿</div>
+                <div class="ingredient-content">
+                    <h3>Cinnamon</h3>
+                    <p>Warming and stimulating, cinnamon improves circulation, fights bacteria, and brings a natural glow to your complexion.</p>
+                </div>
+            </div>
+            <div class="ingredient-item">
+                <div class="ingredient-icon">🌿</div>
+                <div class="ingredient-content">
+                    <h3>Aloe Vera</h3>
+                    <p>Nature's healer, aloe vera provides intense hydration while promoting skin repair and reducing aging signs.</p>
+                </div>
+            </div>
+            <div class="ingredient-item">
+                <div class="ingredient-icon">🍋</div>
+                <div class="ingredient-content">
+                    <h3>Vitamin C</h3>
+                    <p>A powerful brightening agent that evens skin tone, boosts collagen, and defends against free radicals.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonials" class="section testimonials">
+        <h2 class="section-title">Reviews</h2>
+        <div class="testimonial-grid">
+            <div class="testimonial-card">
+                <div class="rating">★★★★★</div>
+                <p class="testimonial-text">The Island Ritual Cleanser is absolutely heavenly. It removes all my makeup while leaving my skin soft and hydrated. I can't imagine my routine without it.</p>
+                <div class="testimonial-author">
+                    <h4>Senara De Silva</h4>
+                    <p>Verified Customer</p>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <div class="rating">★★★★★</div>
+                <p class="testimonial-text">I love that Dew Botanicals uses only natural ingredients. The Ceylon Dew Toner is perfect for my sensitive skin and leaves it feeling refreshed.</p>
+                <div class="testimonial-author">
+                    <h4>Radhi Jayasooriya</h4>
+                    <p>Verified Customer</p>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <div class="rating">★★★★★</div>
+                <p class="testimonial-text">The combination of these two products has transformed my skincare routine. My skin feels balanced, clear, and naturally radiant. Highly recommend!</p>
+                <div class="testimonial-author">
+                    <h4>Nimna Alweera</h4>
+                    <p>Verified Customer</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="section about">
+        <h2 class="section-title">About Us</h2>
+        <div class="about-content">
+            <p class="about-text">At Dew Botanicals, we believe in the transformative power of nature. Our skincare line harnesses the purest botanical ingredients, carefully sourced and expertly formulated to bring out your skin's natural radiance.</p>
+            
+            <p class="about-island">Inspired by the pristine botanicals of Sri Lanka, where tropical abundance meets island purity. Each product captures the essence of our island home at 7°N latitude, where land meets sea in perfect harmony.</p>
+            
+            <div class="values">
+                <div class="value-item">
+                    <h3>Natural</h3>
+                    <p>100% plant-based ingredients</p>
+                </div>
+                <div class="value-item">
+                    <h3>Sustainable</h3>
+                    <p>Eco-friendly packaging</p>
+                </div>
+                <div class="value-item">
+                    <h3>Cruelty-Free</h3>
+                    <p>Never tested on animals</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq" class="section faq">
+        <h2 class="section-title">FAQ</h2>
+        <div class="faq-content">
+            <div class="faq-item">
+                <h3>What makes Dew Botanicals different?</h3>
+                <p>We use only pure, natural ingredients sourced from Sri Lanka's rich botanical heritage. Our products are handcrafted in small batches to ensure the highest quality and freshness.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Are your products suitable for all skin types?</h3>
+                <p>Yes! Our gentle, natural formulations work beautifully with all skin types. The Island Ritual Cleanser and Ceylon Dew Toner are designed to balance and nourish without irritation.</p>
+            </div>
+            <div class="faq-item">
+                <h3>How should I use the products?</h3>
+                <p>Start with the Island Ritual Cleanser on damp skin, massage gently, and rinse. Follow with the Ceylon Dew Toner applied with a cotton pad or sprayed directly onto skin. Use morning and evening for best results.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Are your products vegan and cruelty-free?</h3>
+                <p>Absolutely. All Dew Botanicals products are 100% vegan, cruelty-free, and made with plant-based ingredients. We never test on animals.</p>
+            </div>
+            <div class="faq-item">
+                <h3>What is your shipping policy?</h3>
+                <p>We offer shipping across Sri Lanka with delivery within 3-5 business days. International shipping is available upon request. All orders are carefully packaged to ensure your products arrive in perfect condition.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Can I return products if I'm not satisfied?</h3>
+                <p>Your satisfaction is our priority. If you're not completely happy with your purchase, contact us within 14 days for a full refund or exchange.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section contact">
+        <h2 class="section-title">Contact</h2>
+        <div class="contact-content">
+            <p class="contact-intro">We'd love to hear from you. Reach out with any questions or feedback.</p>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <h3>Email</h3>
+                    <p>hello@dewbotanicals.lk</p>
+                </div>
+                <div class="contact-item">
+                    <h3>Phone</h3>
+                    <p>+94 XX XXX XXXX</p>
+                </div>
+                <div class="contact-item">
+                    <h3>Location</h3>
+                    <p>Kandy, Sri Lanka</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <h3>Connect</h3>
+            <div class="social-links">
+                <a href="#">Instagram</a>
+                <a href="#">Facebook</a>
+                <a href="#">Email</a>
+            </div>
+            <p>&copy; 2025 Dew Botanicals. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
+

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | Dew Botanicals</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Bodoni Moda', serif; color: #1a1a1a; background: #fefefe; }
+        :root { --sage-green: #a5b9a1; --cream: #f5f3ed; --dark-green: #6b7f68; }
+
+        .navbar {
+            position: fixed; top: 0; width: 100%; padding: 2rem 8%; display: flex; justify-content: space-between; align-items: center;
+            background: rgba(254,254,254,0.98); backdrop-filter: blur(20px); z-index: 1000; border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+        .logo { font-size: 1.4rem; font-weight: 300; color: #1a1a1a; letter-spacing: 3px; text-transform: uppercase; display: flex; flex-direction: column; align-items: flex-start; }
+        .logo-main { display: block; }
+        .logo-coordinates { font-size: 0.75rem; font-weight: 300; color: var(--dark-green); letter-spacing: 2px; margin: 0.2rem 0; }
+        .logo-tagline { font-size: 0.7rem; font-weight: 300; color: #999; letter-spacing: 2px; text-transform: none; font-style: italic; display: block; }
+        .nav-links { display: flex; gap: 3rem; list-style: none; }
+        .nav-links a { text-decoration: none; color: #1a1a1a; font-size: 0.9rem; font-weight: 300; letter-spacing: 1px; text-transform: uppercase; transition: opacity 0.3s ease; }
+        .nav-links a:hover { opacity: 0.6; }
+
+        main { padding: 10rem 8% 6rem; }
+        .page-hero { text-align: center; padding: 4rem 0 2rem; background: linear-gradient(to right, var(--cream), #ffffff); margin-top: 6rem; }
+        .page-hero h1 { font-size: 3rem; font-weight: 200; letter-spacing: 6px; text-transform: uppercase; }
+        .intro { max-width: 900px; margin: 2rem auto 3rem; font-size: 1.2rem; color: #666; line-height: 1.9; font-weight: 300; text-align: center; }
+
+        .values { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3rem; max-width: 1000px; margin: 3rem auto; text-align: center; }
+        .value-item h3 { font-size: 1.1rem; margin-bottom: 0.8rem; color: #1a1a1a; font-weight: 300; letter-spacing: 2px; text-transform: uppercase; }
+        .value-item p { color: #999; font-size: 0.9rem; font-weight: 300; }
+
+        .story { max-width: 900px; margin: 4rem auto; color: #666; line-height: 1.9; font-size: 1rem; font-weight: 300; }
+
+        .footer { background: #1a1a1a; color: white; padding: 4rem 8%; text-align: center; margin-top: 4rem; }
+        .footer-content { max-width: 1400px; margin: 0 auto; }
+        .footer h3 { font-weight: 300; letter-spacing: 3px; font-size: 1rem; text-transform: uppercase; margin-bottom: 2rem; }
+        .social-links { display: flex; justify-content: center; gap: 3rem; margin: 2rem 0; }
+        .social-links a { color: white; text-decoration: none; font-size: 0.85rem; letter-spacing: 2px; text-transform: uppercase; transition: opacity 0.3s ease; font-weight: 300; }
+        .social-links a:hover { opacity: 0.6; }
+        .footer p { font-size: 0.85rem; font-weight: 300; opacity: 0.6; letter-spacing: 1px; }
+
+        @media (max-width: 1024px) {
+            main { padding: 8rem 5% 4rem; }
+            .values { grid-template-columns: 1fr; gap: 2rem; }
+            .page-hero h1 { font-size: 2.2rem; }
+            .nav-links { gap: 1.5rem; font-size: 0.8rem; }
+            .navbar { padding: 1.5rem 5%; }
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    const href = this.getAttribute('href');
+                    if (!href || href === '#') return;
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <span class="logo-main">Dew Botanicals</span>
+            <span class="logo-coordinates">7°N SL</span>
+            <span class="logo-tagline">Pure Island Skincare</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html#home">Home</a></li>
+            <li><a href="index.html#products">Shop</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="index.html#faq">FAQ</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section class="page-hero">
+        <h1>About Us</h1>
+    </section>
+
+    <main>
+        <p class="intro">We craft island-born skincare that is pure, gentle, and effective — inspired by Sri Lanka’s botanicals and the rhythm of the tropics.</p>
+
+        <div class="values">
+            <div class="value-item">
+                <h3>Natural</h3>
+                <p>100% plant-based ingredients</p>
+            </div>
+            <div class="value-item">
+                <h3>Sustainable</h3>
+                <p>Eco-friendly packaging</p>
+            </div>
+            <div class="value-item">
+                <h3>Cruelty-Free</h3>
+                <p>Never tested on animals</p>
+            </div>
+        </div>
+
+        <div class="story">
+            <p>At Dew Botanicals, we believe skincare should be simple, nourishing, and rooted in nature. Our formulas are thoughtfully created using Sri Lankan botanicals such as moringa, coconut, and cinnamon — ingredients cherished for centuries for their restorative properties.</p>
+            <br />
+            <p>Each product is made in small batches to ensure freshness and potency. We work closely with local partners to source responsibly and package consciously, so your ritual feels good for your skin and the planet.</p>
+            <br />
+            <p>From our home at 7°N, we share an island philosophy of balance: between land and sea, tradition and innovation. Welcome to your new daily ritual.</p>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <h3>Connect</h3>
+            <div class="social-links">
+                <a href="#">Instagram</a>
+                <a href="#">Facebook</a>
+                <a href="#">Email</a>
+            </div>
+            <p>&copy; 2025 Dew Botanicals. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
+ 
